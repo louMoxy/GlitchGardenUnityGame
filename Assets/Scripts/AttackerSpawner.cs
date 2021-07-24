@@ -6,7 +6,7 @@ public class AttackerSpawner : MonoBehaviour
 {
     [SerializeField] float minSpawnDelay = 1f;
     [SerializeField] float maxSpawnDelay = 5f;
-    [SerializeField] Attacker attacker;
+    [SerializeField] Attacker[] attackers;
 
     bool spawn = true;
 
@@ -19,9 +19,15 @@ public class AttackerSpawner : MonoBehaviour
         }
     }
 
+    public void StopSpawning() {
+        spawn = false;
+    }
+
     private void SpawnAttacker ()
     {
-        Attacker newAttacker = Instantiate(attacker, transform.transform);
+        int index = Mathf.RoundToInt(Random.Range(0f, attackers.Length - 1));
+        Attacker selectedAttacker = attackers[index];
+        Attacker newAttacker = Instantiate(selectedAttacker, transform.transform);
         newAttacker.transform.parent = transform;
     }
 }

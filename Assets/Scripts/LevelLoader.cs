@@ -23,8 +23,26 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(timeToWait);
     }
 
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+        EditorSceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1;
+        EditorSceneManager.LoadScene("Start Screen");
+    }
+
+
     public void LoadNextScene()
     {
         EditorSceneManager.LoadScene(++currentSceneIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
