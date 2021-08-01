@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerHealthDisplay : MonoBehaviour
 {
-    [SerializeField] int health = 5;
+    [SerializeField] float health = 5;
     [SerializeField] int damage = 1;
     Text healthText;
 
     void Start()
     {
+        health = health * PlayerPrefsController.GetDifficulty();
+        Debug.Log(PlayerPrefsController.GetDifficulty());
         healthText = GetComponent<Text>();
         updateDisplay();
     }

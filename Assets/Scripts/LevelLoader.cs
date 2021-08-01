@@ -35,6 +35,11 @@ public class LevelLoader : MonoBehaviour
         EditorSceneManager.LoadScene("Start Screen");
     }
 
+    public void LoadOptions()
+    {
+        EditorSceneManager.LoadScene("Options");
+    }
+
 
     public void LoadNextScene()
     {
